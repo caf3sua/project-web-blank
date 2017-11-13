@@ -1,0 +1,18 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "nativeLanguage": "vi"
+    },
+    "jhipsterVersion": "4.10.2",
+    "baseName": "ProjectWebBlank",
+    "clientFramework": "angular1",
+    "useSass": false,
+    "enableTranslation": true,
+    "nativeLanguage": "vi",
+    "languages": [
+      "vi",
+      "en"
+    ],
+    "clientPackageManager": "yarn"
+  }
+}
