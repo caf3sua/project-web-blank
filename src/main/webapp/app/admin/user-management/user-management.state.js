@@ -5,9 +5,9 @@
         .module('webApp')
         .config(stateConfig);
 
-    stateConfig.$inject = ['$stateProvider'];
+    stateConfig.$inject = ['$stateProvider', 'MODULE_CONFIG'];
 
-    function stateConfig($stateProvider) {
+    function stateConfig($stateProvider, MODULE_CONFIG) {
         $stateProvider
         .state('user-management', {
             parent: 'admin',
@@ -22,7 +22,8 @@
                     controller: 'UserManagementController',
                     controllerAs: 'vm'
                 }
-            },            params: {
+            },            
+            params: {
                 page: {
                     value: '1',
                     squash: true
@@ -44,9 +45,13 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('user-management');
                     return $translate.refresh();
-                }]
-
-            }        })
+                }],
+                // Lazy load
+                loadPlugin: function ($ocLazyLoad) {
+                		return $ocLazyLoad.load(['ngFileUpload', 'app/admin/user-management/user-management.controller.js']);
+                }
+            }
+        })
         .state('user-management.new', {
             url: '/new',
             data: {
@@ -74,7 +79,13 @@
                 }, function() {
                     $state.go('user-management');
                 });
-            }]
+            }],
+            resolve: {
+	        		// Lazy load
+	            loadPlugin: function ($ocLazyLoad) {
+	            		return $ocLazyLoad.load(['app/admin/user-management/user-management-dialog.controller.js']);
+	            }
+	        }
         })
         .state('user-management.edit', {
             url: '/{login}/edit',
@@ -98,7 +109,13 @@
                 }, function() {
                     $state.go('^');
                 });
-            }]
+            }],
+            resolve: {
+	        		// Lazy load
+	            loadPlugin: function ($ocLazyLoad) {
+	            	return $ocLazyLoad.load(['app/admin/user-management/user-management-dialog.controller.js']);
+	            }
+	        }
         })
         .state('user-management-detail', {
             parent: 'user-management',
@@ -118,7 +135,10 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('user-management');
                     return $translate.refresh();
-                }]
+                }],
+                loadPlugin: function ($ocLazyLoad) {
+                		return $ocLazyLoad.load(['app/admin/user-management/user-management-detail.controller.js']);
+                }
             }
         })
         .state('user-management.delete', {
@@ -142,7 +162,13 @@
                 }, function() {
                     $state.go('^');
                 });
-            }]
+            }],
+            resolve: {
+            		// Lazy load
+                loadPlugin: function ($ocLazyLoad) {
+	            		return $ocLazyLoad.load(['app/admin/user-management/user-management-delete-dialog.controller.js']);
+	            }
+            }
         });
     }
 })();
