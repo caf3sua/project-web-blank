@@ -26,7 +26,10 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('health');
                     return $translate.refresh();
-                }]
+                }],
+                loadPlugin: function ($ocLazyLoad) {
+                		return $ocLazyLoad.load(['app/admin/health/health.service.js', 'app/admin/health/health.modal.controller.js', 'app/admin/health/health.controller.js']);
+                }
             }
         });
     }

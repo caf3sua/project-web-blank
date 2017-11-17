@@ -26,7 +26,10 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('configuration');
                     return $translate.refresh();
-                }]
+                }],
+                loadPlugin: function ($ocLazyLoad) {
+	            		return $ocLazyLoad.load(['app/admin/configuration/configuration.service.js', 'app/admin/configuration/configuration.controller.js']);
+	            }
             }
         });
     }

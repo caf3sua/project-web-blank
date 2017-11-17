@@ -26,7 +26,10 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('register');
                     return $translate.refresh();
-                }]
+                }],
+                loadPlugin: function ($ocLazyLoad) {
+	            		return $ocLazyLoad.load(['app/account/register/register.controller.js']);
+	            }
             }
         });
     }

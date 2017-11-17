@@ -25,7 +25,10 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('reset');
                     return $translate.refresh();
-                }]
+                }],
+                loadPlugin: function ($ocLazyLoad) {
+	            		return $ocLazyLoad.load(['app/account/reset/request/reset.request.controller.js']);
+	            }
             }
         });
     }

@@ -26,7 +26,10 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('activate');
                     return $translate.refresh();
-                }]
+                }],
+                loadPlugin: function ($ocLazyLoad) {
+	            		return $ocLazyLoad.load(['app/account/activate/activate.controller.js']);
+	            }
             }
         });
     }

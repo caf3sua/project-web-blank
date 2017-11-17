@@ -26,7 +26,10 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('audits');
                     return $translate.refresh();
-                }]
+                }],
+                loadPlugin: function ($ocLazyLoad) {
+	            		return $ocLazyLoad.load(['app/admin/audits/audits.service.js', 'app/admin/audits/audits.controller.js']);
+	            }
             }
         });
     }

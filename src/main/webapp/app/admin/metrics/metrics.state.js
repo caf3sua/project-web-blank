@@ -26,7 +26,10 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('metrics');
                     return $translate.refresh();
-                }]
+                }],
+                loadPlugin: function ($ocLazyLoad) {
+                		return $ocLazyLoad.load(['app/admin/metrics/metrics.controller.js', 'app/admin/metrics/metrics.modal.controller', 'app/admin/metrics/metrics.service.js']);
+                }
             }
         });
     }

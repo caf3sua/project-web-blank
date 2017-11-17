@@ -26,7 +26,11 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('logs');
                     return $translate.refresh();
-                }]
+                }],
+                // Lazy load
+                loadPlugin: function ($ocLazyLoad) {
+                		return $ocLazyLoad.load(['app/admin/logs/logs.service.js', 'app/admin/logs/logs.controller.js']);
+                }
             }
         });
     }

@@ -30,6 +30,25 @@ angular.module('webApp')
               'app/account/reset/finish/reset.finish.state.js',
               'app/entities/entity.state.js'
           ]
+      },
+      {
+          name: 'components-util',
+          module: false,
+          files: [
+        	      'app/components/util/truncate-words.filter.js',
+        	      'app/components/util/truncate-characters.filter.js',
+        	      'app/components/util/sort-by.directive.js',
+        	      'app/components/util/sort.directive.js',
+        	      'app/components/util/parse-links.service.js',
+        	      'app/components/util/pagination-util.service.js',
+        	      'app/components/util/jhi-item-count.directive.js',
+        	      'app/components/util/error.constants.js',
+        	      'app/components/util/date-util.service.js',
+        	      'app/components/util/data-util.service.js',
+        	      'app/components/util/capitalize.filter.js',
+        	      'app/components/util/base64.service.js',
+              'app/entities/entity.state.js'
+          ]
       }
     ]
   )
@@ -45,6 +64,7 @@ angular.module('webApp')
 run.$inject = ['$ocLazyLoad'];
 
 function run($ocLazyLoad) {
-	console.log('run $ocLazyLoad');
+	console.log('run init $ocLazyLoad');
+	$ocLazyLoad.load(['components-util']);
 	// TODO: load extra libs
 }
