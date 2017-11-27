@@ -5,29 +5,26 @@
         .module('webApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', '$ocLazyLoad'];
 
-    function HomeController ($scope, Principal, LoginService, $state) {
+    function HomeController ($scope, Principal, LoginService, $state, $ocLazyLoad) {
         var vm = this;
 
-        vm.account = null;
-        vm.isAuthenticated = null;
-        vm.login = LoginService.open;
-        vm.register = register;
-        $scope.$on('authenticationSuccess', function() {
-            getAccount();
+        // Document ready
+        angular.element(document).ready(function () {
+	        	$ocLazyLoad.load([
+	    			'content/js/index.js'
+	    		]);
         });
-
-        getAccount();
-
-        function getAccount() {
-            Principal.identity().then(function(account) {
-                vm.account = account;
-                vm.isAuthenticated = Principal.isAuthenticated;
-            });
-        }
-        function register () {
-            $state.go('register');
-        }
+        
+        // Init controller
+	    	(function initController() {
+	    		$('.chat-scroller').slimScroll({
+	    	        "width": '100%',
+	    	        "height": '270px',
+	    	        "wheelStep": 5,
+	    	        "scrollTo": "100px"
+	    	    });
+	    })();
     }
 })();
