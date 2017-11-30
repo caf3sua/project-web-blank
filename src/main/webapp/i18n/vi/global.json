@@ -1,0 +1,14 @@
+{
+    "global": {
+        "title": "ITSOL WebApp",
+        "menu": {
+            "home": "Trang chủ",
+            "Dashboard": "Bảng điều khiển",
+            "language": "Ngôn ngữ"
+        },
+        "placeholder" : {
+        		"search" : "Tìm kiếm..."
+        }
+    },
+    "footer": "This is your footer"
+}

@@ -1754,9 +1754,11 @@ body {
       margin-left: 13.75rem; }
     .app-aside.sm:not(.folded),
     .app-aside.sm:not(.folded) .scroll {
-      width: 11.25rem; }
+      /* width: 11.25rem; */
+      width: 15.25rem; }
     .app-aside.sm:not(.hide) ~ .app-content {
-      margin-left: 11.25rem; }
+      /* margin-left: 11.25rem; */
+      margin-left: 15.25rem; }
     .app-aside.folded {
       width: 4rem; }
       .app-aside.folded:not(.hide) ~ .app-content {

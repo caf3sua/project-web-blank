@@ -29,7 +29,18 @@
   <link rel="stylesheet" href="content/assets/styles/font.css" type="text/css" />
 </head>
 <body ng-app="app" ng-controller="AppCtrl" class="{{app.setting.bg}}" ng-class="{'container': app.setting.boxed, 'ie': isIE,'smart': isSmart}">
-  <div class="app" ui-view></div>
+  	<div class="app" ui-view></div>
+  
+	<!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
+    <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>-->
+    
 <!-- build:js scripts/app.angular.js -->
 <!-- jQuery -->
   <script src="libs/jquery/jquery/dist/jquery.js"></script>
@@ -47,12 +58,34 @@
   <!-- router -->
   <script src="libs/angular/angular-ui-router/release/angular-ui-router.js"></script>
   <!-- storage -->
-  <script src="libs/angular/ngstorage/ngStorage.js"></script>
+  <!-- <script src="libs/angular/ngstorage/ngStorage.js"></script> -->
+  <script src="bower_components/ngstorage/ngStorage.js"></script>
   <!-- utils -->
   <script src="libs/angular/angular-ui-utils/ui-utils.js"></script>
   <!-- lazyload -->
   <script src="libs/angular/oclazyload/dist/ocLazyLoad.js"></script>
 
+	<!-- build:js app/vendor.js -->
+    <!-- bower:js -->
+    <!-- Core lib -->
+    <script src="bower_components/messageformat/messageformat.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js"></script>
+    <script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
+    <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+    <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+    <!-- endinject -->
+    <!-- endbuild -->
+    
 <!-- App -->
   <script src="scripts/app.js"></script>
   <script src="scripts/config.js"></script>
@@ -74,7 +107,29 @@
   <script src="scripts/services/palette.js"></script>
 <!-- endbuild -->
 
+	<!-- Component -->
+    <script src="apps/components/language/language.service.js"></script>
+    <script src="apps/components/language/language.filter.js"></script>
+    <script src="apps/components/language/language.controller.js"></script>
+    <script src="apps/components/language/language.constants.js"></script>
+    
+	<!-- Config and intercepter -->
+    <script src="apps/blocks/interceptor/errorhandler.interceptor.js"></script>
+    <script src="apps/blocks/interceptor/auth-expired.interceptor.js"></script>
+    <script src="apps/blocks/interceptor/auth.interceptor.js"></script>
+    <script src="apps/blocks/interceptor/resource-path.interceptor.js"></script>
+    <script src="apps/blocks/handlers/translation.handler.js"></script>
+    <!-- <script src="apps/blocks/handlers/state.handler.js"></script> -->
+    
+    <script src="apps/blocks/config/compile.config.js"></script>
+    <script src="apps/blocks/config/translation-storage.provider.js"></script>
+    <script src="apps/blocks/config/translation.config.js"></script>
+	<script src="apps/blocks/config/http.config.js"></script>
+
+	<script src="apps/blocks/config/localstorage.config.js"></script>
+    
 	<!-- Configuration state router -->
-	<script src="apps/dashboard/dashboard.state.js"></script>	
+	<script src="apps/dashboard/dashboard.state.js"></script>
+	<script src="apps/account/account.state.js"></script>	
 </body>
 </html>

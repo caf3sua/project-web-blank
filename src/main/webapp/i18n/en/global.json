@@ -1,0 +1,14 @@
+{
+    "global": {
+        "title": "ITSOL WebApp",
+        "menu": {
+            "home": "Home",
+            "Dashboard": "Dashboard",
+            "language": "Language"
+        },
+        "placeholder" : {
+        		"search" : "Search..."
+        }
+    },
+    "footer": "This is your footer"
+}

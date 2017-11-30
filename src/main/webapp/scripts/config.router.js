@@ -21,30 +21,30 @@
       config.$inject =  ['$stateProvider', '$urlRouterProvider', 'MODULE_CONFIG'];
       function config( $stateProvider,   $urlRouterProvider,   MODULE_CONFIG ) {
         
-        var p = getParams('layout'),
-            l = p ? p + '.' : '',
-            layout = '../views/layout/layout.2.html';
+//        var p = getParams('layout'),
+//            l = p ? p + '.' : '',
+//            layout = '../views/layout/layout.2.html';
 //            dashboard = '../views/dashboard/dashboard.'+l+'html';
 
         $urlRouterProvider
         		.otherwise('/app/dashboard');
+        		//.otherwise('/access/signin');
         $stateProvider
         		.state('app', {
         			abstract: true,
         			url: '/app',
         			views: {
         				'': {
-        					templateUrl: layout
+        					templateUrl: '../views/theme/layout/layout.html'
         				}
-        			}
+        			},
+        			resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
+                }
         		})
-//            .state('app.dashboard', {
-//              url: '/dashboard',
-//              templateUrl: dashboard,
-//              data : { title: 'Dashboard' },
-//              controller: "ChartCtrl",
-//              resolve: load(['scripts/controllers/chart.js'])
-//            })
 
             // applications
             .state('app.contact', {
@@ -479,26 +479,6 @@
             .state('505', {
               url: '/505',
               templateUrl: '../views/misc/505.html'
-            })
-            .state('access', {
-              url: '/access',
-              template: '<div class="dark bg-auto w-full"><div ui-view class="fade-in-right-big smooth pos-rlt"></div></div>'
-            })
-            .state('access.signin', {
-              url: '/signin',
-              templateUrl: '../views/misc/signin.html'
-            })
-            .state('access.signup', {
-              url: '/signup',
-              templateUrl: '../views/misc/signup.html'
-            })
-            .state('access.forgot-password', {
-              url: '/forgot-password',
-              templateUrl: '../views/misc/forgot-password.html'
-            })
-            .state('access.lockme', {
-              url: '/lockme',
-              templateUrl: '../views/misc/lockme.html'
             })
           ;
 

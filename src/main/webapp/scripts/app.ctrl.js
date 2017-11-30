@@ -20,8 +20,8 @@
         vm.isSmart = isSmart();
         // config
         vm.app = {
-          name: 'Itsol Webapp',
-          version: 'v0.1',
+          name: 'Itsol',
+          version: '0.1',
           // for chart colors
           color: {
             'primary':      '#0cc2aa',
@@ -125,6 +125,11 @@
           var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
               results = regex.exec(location.search);
           return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+        
+        vm.toogleSettingFolded = function() {
+        		console.log('toogleSettingFolded');
+        		vm.app.setting.folded = !vm.app.setting.folded;
         }
 
       }
