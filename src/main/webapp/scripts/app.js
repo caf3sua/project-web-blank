@@ -35,16 +35,16 @@
       ])
       .run(run);
     
-//    run.$inject = ['stateHandler', 'translationHandler'];
-//
-//    function run(stateHandler, translationHandler) {
-//        stateHandler.initialize();
-//        translationHandler.initialize();
-//    }
-    
-    run.$inject = ['translationHandler'];
+    run.$inject = ['stateHandler', 'translationHandler'];
 
-    function run(translationHandler) {
+    function run(stateHandler, translationHandler) {
+        stateHandler.initialize();
         translationHandler.initialize();
     }
+    
+//    run.$inject = ['translationHandler'];
+//
+//    function run(translationHandler) {
+//        translationHandler.initialize();
+//    }
 })();

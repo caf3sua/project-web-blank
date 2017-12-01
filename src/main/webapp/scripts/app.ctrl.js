@@ -12,12 +12,20 @@
       .module('app')
       .controller('AppCtrl', AppCtrl);
 
-      AppCtrl.$inject  = ['$scope', '$localStorage', '$location', '$rootScope', '$anchorScroll', '$timeout', '$window'];
+      AppCtrl.$inject  = ['$scope', '$localStorage', '$location', '$rootScope', '$anchorScroll', '$timeout', '$window', 'Auth', '$state'];
 
-      function AppCtrl($scope, $localStorage, $location, $rootScope, $anchorScroll, $timeout, $window) {
+      function AppCtrl($scope, $localStorage, $location, $rootScope, $anchorScroll, $timeout, $window, Auth, $state) {
         var vm = $scope;
         vm.isIE = isIE();
         vm.isSmart = isSmart();
+        // menu
+        vm.asideMenu = {
+        		"dashboard" : {
+        			"level" : "root",
+        			"ui-sref" : "root",
+        		},
+        };
+        
         // config
         vm.app = {
           name: 'Itsol',
@@ -130,6 +138,14 @@
         vm.toogleSettingFolded = function() {
         		console.log('toogleSettingFolded');
         		vm.app.setting.folded = !vm.app.setting.folded;
+        }
+        
+        vm.logout = function() {
+        		console.log('logout');
+            Auth.logout();
+//            vm.isAuthenticated = null;
+//            $rootScope.$broadcast('logoutSuccess');
+//            $state.go('access.signin');
         }
 
       }
